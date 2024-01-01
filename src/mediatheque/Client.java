@@ -68,6 +68,13 @@ public class Client {
     public void setCNE(String CNE) {
         this.CNE = CNE;
     }
-    
+
+    public List<Document> getFavorites() {
+        return favorites;
+    }
+
+    public List<Document> getKindles() {
+        return kindles;
+    }
     
 }

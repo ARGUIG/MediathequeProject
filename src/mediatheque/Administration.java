@@ -2,8 +2,12 @@ package mediatheque;
 
 
 public interface Administration {
-    void addDoc(Document doc);
-    void removeDoc(Document doc);
+    void addBook(Book book);
+    void removeBook(Book book);
+    void addMagazine(Magazine magazine);
+    void removeMagazine(Magazine magazine);
+    void addDictionary(Dictionary dictionary);
+    void removeDictionary(Dictionary dictionary);
     void addClient(Client client);
     void removeClient(Client client);
     void addEmprunt(Client client,Document document);
