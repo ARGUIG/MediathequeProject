@@ -1,10 +1,10 @@
 package mediatheque;
 
-public class Dictionnary extends Document{
+public class Dictionary extends Document{
     private Language language;
     private int tome;
 
-    public Dictionnary(Language language, int tome, String isbn, String title, String author, int yearOfPublication) {
+    public Dictionary(Language language, int tome, String isbn, String title, String author, int yearOfPublication) {
         super(isbn, title, author, yearOfPublication);
         this.language = language;
         this.tome = tome;
