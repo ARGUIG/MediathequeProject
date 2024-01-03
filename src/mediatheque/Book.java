@@ -12,7 +12,7 @@ public class Book extends Document{
         this.bookCategory = bookCategory;
         this.tome = tome;
     }
-
+///ss
     @Override
     public String toString() {
         return "Book{" + "isbn=" + isbn + ", title=" + title + ", author=" + author + ", yearOfPublication=" + yearOfPublication +", nbreOfPages=" + nbreOfPages + ", bookCategory=" + bookCategory + ", tome=" + tome + '}';

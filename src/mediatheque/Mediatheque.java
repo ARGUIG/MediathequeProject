@@ -71,7 +71,7 @@ public class Mediatheque implements Administration{
     }
 
     public static void main(String[] args) {
-        
+        System.out.println("ezfef");
     }
     
     
