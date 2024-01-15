@@ -4,7 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -14,9 +17,12 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
+import javax.swing.JTable;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -279,6 +285,35 @@ public class Kindles extends JFrame {
 		btnSearch.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnSearch.setBounds(685, 24, 95, 34);
 		contentPanel.add(btnSearch);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(249, 175, 839, 419);
+		getContentPane().add(scrollPane);
+		
+		JTable table = new JTable();
+		table.setFont(new Font("Verdana", Font.PLAIN, 15));
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"ISBN", "Title", "Author", "Year of publication", "Category"
+			}
+		) {
+			
+			private static final long serialVersionUID = 1L;
+			@SuppressWarnings("rawtypes")
+			Class[] columnTypes = new Class[] {
+				    String.class, String.class, String.class, String.class, String.class
+				};
+			
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		
 		
 
 		

@@ -4,7 +4,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -14,9 +18,13 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
+import javax.swing.JTable;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -37,31 +45,12 @@ public class Magazines extends JFrame {
 	private JLabel lblLogo;
 
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Magazines() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPanel = new JPanel();
 		contentPanel.setBackground(new Color(22, 26, 48));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setSize(1280,720);
+		setSize(1135,656);
 		setContentPane(contentPanel);
 		contentPanel.setLayout(null);
 		setResizable(false);
@@ -281,7 +270,33 @@ public class Magazines extends JFrame {
 		btnSearch.setBounds(685, 24, 95, 34);
 		contentPanel.add(btnSearch);
 		
-
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(249, 175, 839, 419);
+		getContentPane().add(scrollPane);
+		
+		JTable table = new JTable();
+		table.setFont(new Font("Verdana", Font.PLAIN, 15));
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"ISBN", "Title", "Author", "Year of publication", "Category", "Periodicity", "Date of edition"
+			}
+		) {
+			
+			private static final long serialVersionUID = 1L;
+			@SuppressWarnings("rawtypes")
+			Class[] columnTypes = new Class[] {
+				    String.class, String.class, String.class, String.class, String.class, String.class, String.class   
+				};
+			
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
 		
 
 		setLocationRelativeTo(null);
@@ -289,4 +304,21 @@ public class Magazines extends JFrame {
 
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\asus\\Downloads\\logo.png"));
 	}
+
+	
+	public static void main(String[] args) throws Exception {
+		UIManager.setLookAndFeel(new NimbusLookAndFeel());
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Magazines frame = new Magazines();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+
 }
