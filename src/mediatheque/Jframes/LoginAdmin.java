@@ -25,21 +25,20 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-import javax.swing.event.AncestorListener;
-import javax.swing.event.AncestorEvent;
+import javax.swing.SwingConstants;
 
 
-public class Login extends JFrame {
+public class LoginAdmin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPanel;
 	public static JTextField txtUsername;
 	private JPasswordField txtpassword;
 
-	public Login() {
+	public LoginAdmin() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\asus\\Downloads\\logo.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(872,661);
+		setSize(777,628);
 		contentPanel = new JPanel();
 		contentPanel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -55,7 +54,7 @@ public class Login extends JFrame {
 		JPanel centeredPanel = new JPanel();
 		centeredPanel.setBorder(null);
 		centeredPanel.setBackground(new Color(49, 48, 77));
-		centeredPanel.setBounds(206, 141, 437, 411);
+		centeredPanel.setBounds(169, 141, 421, 368);
 		contentPanel.add(centeredPanel);
 		centeredPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		centeredPanel.setLayout(null);
@@ -66,10 +65,10 @@ public class Login extends JFrame {
 		centeredPanel.add(txtUsername);
 		txtUsername.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Username");
+		JLabel lblNewLabel_1 = new JLabel("Admin's name");
 		lblNewLabel_1.setForeground(new Color(240, 236, 255));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblNewLabel_1.setBounds(29, 40, 107, 37);
+		lblNewLabel_1.setBounds(29, 40, 162, 37);
 		centeredPanel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Password");
@@ -85,7 +84,7 @@ public class Login extends JFrame {
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost/librarymanagementsystem","root","root");
 					Statement st = con.createStatement();
-					String query = "select * from login";
+					String query = "select * from loginadmin";
 					ResultSet res = st.executeQuery(query);
 					String user;
 					String password;
@@ -93,10 +92,10 @@ public class Login extends JFrame {
 					
 					while(res.next()) 
 					{
-						user = res.getString("username");
+						user = res.getString("admin");
 						password = res.getString("password");
 						if(txtUsername.getText().equals(user) && getPasswordFromField(txtpassword).equals(password)) {
-							new Home().setVisible(true);
+							new DocsAdministration().setVisible(true);
 							dispose();
 							test = 1;
 							break;
@@ -105,7 +104,7 @@ public class Login extends JFrame {
 					
 					if(test==0)
 					{
-						JOptionPane.showMessageDialog(Login.this, "Username or password is incorrect");
+						JOptionPane.showMessageDialog(LoginAdmin.this, "Admin's name or password is incorrect");
 					}
 					
 					con.close();
@@ -121,45 +120,19 @@ public class Login extends JFrame {
 		
 
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		btnLogin.setBounds(187, 245, 113, 44);
+		btnLogin.setBounds(121, 261, 177, 44);
 		centeredPanel.add(btnLogin);
-		
-		JLabel lblSignUp = new JLabel(">> No account? Create one");
-		lblSignUp.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				SignUp signUp=new SignUp();
-				signUp.setVisible(true);
-				dispose(); 
-			}
-		});
-		lblSignUp.setForeground(new Color(240, 236, 255));
-		lblSignUp.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblSignUp.setBounds(59, 327, 301, 37);
-		centeredPanel.add(lblSignUp);
 		
 		txtpassword = new JPasswordField();
 		txtpassword.setFont(new Font("Verdana", Font.PLAIN, 18));
 		txtpassword.setBounds(29, 186, 353, 35);
 		centeredPanel.add(txtpassword);
 		
-		JLabel lblAdmin = new JLabel("Admin?");
-		lblAdmin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				new LoginAdmin().setVisible(true);
-				dispose(); 
-			}
-		});
-		lblAdmin.setForeground(new Color(240, 236, 255));
-		lblAdmin.setFont(new Font("Verdana", Font.PLAIN, 20));
-		lblAdmin.setBounds(303, 250, 85, 37);
-		centeredPanel.add(lblAdmin);
-		
-		JLabel lblNewLabel = new JLabel("WELCOME TO MEDIATHEQUE");
+		JLabel lblNewLabel = new JLabel("Admin Authentification");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(new Color(240, 236, 255));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 34));
-		lblNewLabel.setBounds(173, 53, 509, 55);
+		lblNewLabel.setBounds(126, 53, 509, 55);
 		contentPanel.add(lblNewLabel);
 
 		setLocationRelativeTo(null);
@@ -183,7 +156,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login frame = new Login();
+					LoginAdmin frame = new LoginAdmin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

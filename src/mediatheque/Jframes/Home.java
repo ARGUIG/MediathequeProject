@@ -9,7 +9,6 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.Color;
-import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,7 +28,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -37,6 +35,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
+import javax.swing.SwingConstants;
 
 public class Home extends JFrame {
 
@@ -340,6 +339,19 @@ public class Home extends JFrame {
 				"ISBN", "Title", "Author", "Category"
 			}
 		));
+		
+		JLabel lblNewLabel_1 = new JLabel("WELCOME TO MEDIATHEQUE ");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 29));
+		lblNewLabel_1.setBounds(390, 79, 562, 71);
+		contentPanel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Your gateway to captivating reads!");
+		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1.setFont(new Font("Verdana", Font.PLAIN, 26));
+		lblNewLabel_1_1.setBounds(357, 123, 562, 71);
+		contentPanel.add(lblNewLabel_1_1);
 		
 
 		setLocationRelativeTo(null);

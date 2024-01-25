@@ -362,7 +362,7 @@ public class Books extends JFrame {
 					String message = "";
 					if(rdbtnKindles.isSelected())
 					{
-						Insertquery = "INSERT INTO kindles (username,ISBN,title,author,category) VALUES (?,?,?,?,?)";
+						Insertquery = "INSERT INTO kindles (username,ISBN,title,author,category,status) VALUES (?,?,?,?,?,?)";
 						message = "This Book is added successfully to your kindles"; 
 					}
 					
@@ -387,7 +387,9 @@ public class Books extends JFrame {
 							ps.setString(2,res.getString(2));
 							ps.setString(3,res.getString(3));
 							ps.setString(4,res.getString(4));
-							ps.setString(5,"Book");
+							ps.setString(5,"book");
+							if(rdbtnKindles.isSelected())
+								ps.setString(6,"under review");
 							
 						    test = 1;
 						    

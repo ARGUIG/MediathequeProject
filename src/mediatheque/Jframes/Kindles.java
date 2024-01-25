@@ -284,7 +284,7 @@ public class Kindles extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ISBN", "Title", "Author", "Category"
+				"ISBN", "Title", "Author", "Category","Status"
 			}
 		));
 		
@@ -323,7 +323,7 @@ public class Kindles extends JFrame {
 
 						if (res.getString(4).equals(txtSearch.getText())) {
 						    DefaultTableModel T = (DefaultTableModel) table.getModel();
-					        obj = new Object[]{res.getString(3), res.getString(4), res.getString(5), res.getString(6)};
+					        obj = new Object[]{res.getString(3), res.getString(4), res.getString(5), res.getString(6),res.getString(7)};
 						    T.addRow(obj);
 						    test = 1;
 						}
@@ -423,7 +423,7 @@ public class Kindles extends JFrame {
 			{
 				Object[] obj = null; // Declare the obj array outside the if conditions
 			    DefaultTableModel T = (DefaultTableModel) table.getModel();
-		        obj = new Object[]{res.getString(3), res.getString(4), res.getString(5), res.getString(6)};
+		        obj = new Object[]{res.getString(3), res.getString(4), res.getString(5), res.getString(6),res.getString(7)};
 			    T.addRow(obj);
 
 			}
